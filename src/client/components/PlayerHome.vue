@@ -27,8 +27,7 @@
       </sidebar>
 
       <div v-if="thisPlayer.corporationCard">
-
-          <div class="player_home_block board-container">
+          <div class="player_home_block">
               <a name="board" class="player_home_anchor"></a>
               <board
                 :spaces="game.spaces"
@@ -50,21 +49,11 @@
               <turmoil v-if="game.turmoil" :turmoil="game.turmoil"/>
 
               <MoonBoard v-if="game.gameOptions.moonExpansion" :model="game.moon" :hideTiles="hideTiles"/>
+          </div>
 
-              <div v-if="playerView.players.length > 1" class="player_home_block--milestones-and-awards">
-                  <Milestone :milestones_list="game.milestones" />
-                  <Awards :awards="game.awards" show-scores/>
-
-                  <div class="player_home_block nofloat">
-                    <log-panel
-                      :id="playerView.id"
-                      :players="playerView.players"
-                      :generation="game.generation"
-                      :lastSoloGeneration="game.lastSoloGeneration"
-                      :color="thisPlayer.color"
-                      :step="game.step"></log-panel>
-                  </div>
-              </div>
+          <div v-if="playerView.players.length > 1" class="player_home_block--milestones-and-awards">
+              <Milestone :milestones_list="game.milestones" />
+              <Awards :awards="game.awards" show-scores/>
           </div>
           
           <players-overview class="player_home_block player_home_block--players nofloat" :playerView="playerView" v-trim-whitespace id="shortkey-playersoverview"/>
@@ -129,6 +118,13 @@
               </div>
           </div>
 
+          <log-panel
+            :id="playerView.id"
+            :players="playerView.players"
+            :generation="game.generation"
+            :lastSoloGeneration="game.lastSoloGeneration"
+            :color="thisPlayer.color"
+            :step="game.step"></log-panel>
       </div>
 
       <div class="player_home_block player_home_block--setup nofloat"  v-if="!thisPlayer.corporationCard">
@@ -218,7 +214,7 @@
               </div>
           </details>
       </div>
-
+                  
       <div v-if="game.colonies.length > 0" class="player_home_block" ref="colonies" id="shortkey-colonies">
           <a name="colonies" class="player_home_anchor"></a>
           <dynamic-title title="Colonies" :color="thisPlayer.color"/>
@@ -268,6 +264,7 @@ import {GameModel} from '@/models/GameModel';
 import {PlayerViewModel, PublicPlayerModel} from '@/models/PlayerModel';
 import "../../styles/player_home.less";
 import "../../styles/cards.less";
+import "../../styles/log.less";
 
 import * as raw_settings from '@/genfiles/settings.json';
 

@@ -4,12 +4,12 @@
           <h2 :class="getTitleClasses()">
               <span v-i18n>Game log</span>
           </h2>
-          <div class="log-gen-title">Gen: </div>
+          <!-- <div class="log-gen-title">Gen: </div>
           <div class="log-gen-numbers">
             <div v-for="n in getGenerationsRange()" :key="n" :class="getClassesGenIndicator(n)" v-on:click.prevent="selectGeneration(n)">
               {{ n }}
             </div>
-          </div>
+          </div> -->
           <span class="label-additional" v-if="players.length === 1"><span :class="lastGenerationClass">of {{this.lastSoloGeneration}}</span></span>
         </div>
         <div class="panel log-panel">
