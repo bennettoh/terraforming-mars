@@ -28,7 +28,7 @@
 
       <div v-if="thisPlayer.corporationCard">
 
-          <div class="player_home_block">
+          <div class="player_home_block board-container">
               <a name="board" class="player_home_anchor"></a>
               <board
                 :spaces="game.spaces"
@@ -54,20 +54,20 @@
               <div v-if="playerView.players.length > 1" class="player_home_block--milestones-and-awards">
                   <Milestone :milestones_list="game.milestones" />
                   <Awards :awards="game.awards" show-scores/>
+
+                  <div class="player_home_block nofloat">
+                    <log-panel
+                      :id="playerView.id"
+                      :players="playerView.players"
+                      :generation="game.generation"
+                      :lastSoloGeneration="game.lastSoloGeneration"
+                      :color="thisPlayer.color"
+                      :step="game.step"></log-panel>
+                  </div>
               </div>
           </div>
-
+          
           <players-overview class="player_home_block player_home_block--players nofloat" :playerView="playerView" v-trim-whitespace id="shortkey-playersoverview"/>
-
-          <div class="player_home_block nofloat">
-              <log-panel
-                :id="playerView.id"
-                :players="playerView.players"
-                :generation="game.generation"
-                :lastSoloGeneration="game.lastSoloGeneration"
-                :color="thisPlayer.color"
-                :step="game.step"></log-panel>
-          </div>
 
           <div class="player_home_block player_home_block--actions nofloat">
               <a name="actions" class="player_home_anchor"></a>
@@ -266,6 +266,8 @@ import {Phase} from '@/Phase';
 import StackedCards from '@/client/components/StackedCards.vue';
 import {GameModel} from '@/models/GameModel';
 import {PlayerViewModel, PublicPlayerModel} from '@/models/PlayerModel';
+import "../../styles/player_home.less";
+import "../../styles/cards.less";
 
 import * as raw_settings from '@/genfiles/settings.json';
 

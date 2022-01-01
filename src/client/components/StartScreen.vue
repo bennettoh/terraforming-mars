@@ -2,8 +2,8 @@
 <div class="start-screen">
   <div v-i18n class="start-screen-links">
     <div class="start-screen-header start-screen-link--title">
-      <div class="start-screen-title-top">TERRAFORMING</div>
-      <div class="start-screen-title-bottom">MARS</div>
+      <div class="start-screen-title-top">TERRORIZING</div>
+      <div class="start-screen-title-bottom">KOALAS</div>
     </div>
     <a class="start-screen-link start-screen-link--new-game" href="/new-game" v-i18n>New game</a>
     <a class="start-screen-link start-screen-link--solo" href="/solo" v-i18n>Solo challenge</a>

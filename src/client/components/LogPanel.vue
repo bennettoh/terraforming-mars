@@ -21,12 +21,14 @@
           <div class='debugid'>(debugid {{step}})</div>
         </div>
         <div class="card-panel" v-if="cards.length > 0 || globalEventNames.length > 0">
-          <Button size="big" type="close" :disableOnServerBusy="false" @click="hideMe" align="right"/>
-          <div id="log_panel_card" class="cardbox" v-for="card in cards" :key="card">
-            <Card :card="{name: card, resources: getResourcesOnCard(card)}"/>
-          </div>
-          <div id="log_panel_card" class="cardbox" v-for="globalEventName in globalEventNames" :key="globalEventName">
-            <global-event :globalEvent="getGlobalEvent(globalEventName)" type="prior" :showIcons="false"></global-event>
+          <div>
+            <div id="log_panel_card" class="cardbox" v-for="card in cards" :key="card">
+              <Card :card="{name: card, resources: getResourcesOnCard(card)}"/>
+            </div>
+            <div id="log_panel_card" class="cardbox" v-for="globalEventName in globalEventNames" :key="globalEventName">
+              <global-event :globalEvent="getGlobalEvent(globalEventName)" type="prior" :showIcons="false"></global-event>
+            </div>
+            <Button size="big" type="close" :disableOnServerBusy="false" @click="hideMe" align="right"/>
           </div>
         </div>
       </div>
@@ -57,6 +59,7 @@ import {GlobalEventModel} from '@/models/TurmoilModel';
 import {PartyName} from '@/turmoil/parties/PartyName';
 import Button from '@/client/components/common/Button.vue';
 import {Log} from '@/Log';
+import '../../styles/log.less';
 
 let logRequest: XMLHttpRequest | undefined;
 
